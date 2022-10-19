@@ -2058,6 +2058,7 @@ static int tcp_v6_init_sock(struct sock *sk)
 	return 0;
 }
 
+
 #ifndef CONFIG_MPTCP
 static
 #endif
@@ -2066,6 +2067,7 @@ void tcp_v6_destroy_sock(struct sock *sk)
 	tcp_v4_destroy_sock(sk);
 	inet6_destroy_sock(sk);
 }
+
 
 #ifdef CONFIG_PROC_FS
 /* Proc filesystem TCPv6 sock list dumping. */
@@ -2263,7 +2265,7 @@ struct proto tcpv6_prot = {
 	.accept			= inet_csk_accept,
 	.ioctl			= tcp_ioctl,
 	.init			= tcp_v6_init_sock,
-	.destroy		= tcp_v6_destroy_sock,
+	.destroy		= tcp_v4_destroy_sock,
 	.shutdown		= tcp_shutdown,
 	.setsockopt		= tcp_setsockopt,
 	.getsockopt		= tcp_getsockopt,
