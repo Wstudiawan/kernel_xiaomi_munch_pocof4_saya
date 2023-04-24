@@ -25,7 +25,7 @@ if [ "$BUILD" = "local" ]; then
 	fi
 fi
 
-DEVICE=$2
+DEVICE=munch
 
 VERSION=BETA
 if [ "${DEVICE}" = "alioth" ]; then
