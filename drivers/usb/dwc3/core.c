@@ -1023,6 +1023,7 @@ int dwc3_core_init(struct dwc3 *dwc)
 		dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
 	}
 
+
 	if (dwc->dr_mode == USB_DR_MODE_HOST || dwc3_is_otg_or_drd(dwc)) {
 		reg = dwc3_readl(dwc->regs, DWC3_GUCTL);
 
@@ -1037,6 +1038,7 @@ int dwc3_core_init(struct dwc3 *dwc)
 
 		dwc3_writel(dwc->regs, DWC3_GUCTL, reg);
 	}
+
 
 	/*
 	 * Must config both number of packets and max burst settings to enable
