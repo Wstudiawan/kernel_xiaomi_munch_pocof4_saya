@@ -65,7 +65,7 @@ ZIPNAME=Uranium
 FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-RC1.0-KERNEL-AOSP-${TM}.zip
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=neutron
+COMPILER=zyc
 
 # Clone ToolChain
 function cloneTC() {
