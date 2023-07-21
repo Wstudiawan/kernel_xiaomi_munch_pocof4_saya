@@ -65,7 +65,7 @@ ZIPNAME=Uranium
 FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-RC1.0-KERNEL-AOSP-${TM}.zip
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=proton
+COMPILER=aosp
 
 # Clone ToolChain
 function cloneTC() {
@@ -105,7 +105,7 @@ function cloneTC() {
 	  		echo "  Already Cloned Aosp Clang"
 	  		echo "××××××××××××××××××××××××××××"
 			else
-			export CLANG_VERSION="clang-r487747"
+			export CLANG_VERSION="clang-r487747c"
 			echo "* It's not cloned, cloning it..."
         		mkdir clangB
         		cd clangB || exit
