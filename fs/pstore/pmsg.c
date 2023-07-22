@@ -104,8 +104,8 @@ static ssize_t pmsg_write_user(const char __user *buf, size_t count)
 
 static void pmsg_write_iovec_str(const struct iovec *iov)
 {
-	void __user *buf = iov->iov_base;
-	size_t len = iov->iov_len - 1;
+	void __user *buf = iovec->iov_base;
+	size_t len = iovec->iov_len - 1;
 
 	if (len <= 0)
 		return;
@@ -116,8 +116,8 @@ static void pmsg_write_iovec_str(const struct iovec *iov)
 static bool pmsg_is_pmsg_header(unsigned long part, const struct iovec *iov)
 {
 	struct android_pmsg_log_header pmsg_header;
-	void __user *buf = iov->iov_base;
-	size_t len = iov->iov_len;
+	void __user *buf = iovec->iov_base;
+	size_t len = iovec->iov_len;
 
 	int ret;
 
@@ -140,8 +140,8 @@ static bool pmsg_is_pmsg_header(unsigned long part, const struct iovec *iov)
 static bool pmsg_is_header(unsigned long part, const struct iovec *iov)
 {
 	struct android_log_header header;
-	void __user *buf = iov->iov_base;
-	size_t len = iov->iov_len;
+	void __user *buf = iovec->iov_base;
+	size_t len = iovec->iov_len;
 	int ret;
 
 	if (part != 1)
@@ -164,8 +164,8 @@ static bool pmsg_is_prio(unsigned long part, const struct iovec *iov,
 			 char *priority)
 {
 	struct android_pmsg_prio_header prio_header;
-	void __user *buf = iov->iov_base;
-	size_t len = iov->iov_len;
+	void __user *buf = iovec->iov_base;
+	size_t len = iovec->iov_len;
 	int ret;
 
 	if (part != 2)
@@ -188,7 +188,7 @@ static bool pmsg_is_prio(unsigned long part, const struct iovec *iov,
 
 static bool pmsg_is_tag(unsigned long part, const struct iovec *iov)
 {
-	size_t len = iov->iov_len;
+	size_t len = iovec->iov_len;
 
 	if (part != 2)
 		return false;
@@ -218,11 +218,11 @@ static ssize_t pmsg_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	unsigned long i;
 	char priority[] = "# ";
 
-	if (!iter_is_iovec(from))
+	if (iter_is_iovec(from))
 		return -EINVAL;
 
 	for (i = 0; i < from->nr_segs; i++) {
-		const struct iovec *iov = &from->iov[i];
+		const struct iovec *iov = from->iov[i];
 
 		if (pmsg_is_pmsg_header(i, iov) ||
 		    pmsg_is_header(i, iov) ||
