@@ -61,8 +61,8 @@ DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
 TM=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME=Uranium
-FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-RC1.0-KERNEL-AOSP-${TM}.zip
+ZIPNAME=Klinker
+FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-KLINKER-KERNEL-MIUI-${TM}.zip
 
 # Specify compiler [ proton, nexus, aosp ]
 COMPILER=aosp
@@ -171,8 +171,8 @@ function exports() {
         export SUBARCH=arm64
                
         # KBUILD HOST and USER
-        export KBUILD_BUILD_HOST=ArchLinux
-        export KBUILD_BUILD_USER="Wahyu_Studi"
+        export KBUILD_BUILD_HOST=Ubuntu
+        export KBUILD_BUILD_USER="wahyu_studi"
         
         # CI
         if [ "$CI" ]
