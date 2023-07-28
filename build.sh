@@ -62,10 +62,10 @@ TM=$(date +"%F%S")
 
 # Specify Final Zip Name
 ZIPNAME=Nexus
-FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-RC1.0-KERNEL-AOSP-${TM}.zip
+FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-Klinker-KERNEL-MIUI-${TM}.zip
 
 # Specify compiler [ proton, nexus, aosp ]
-COMPILER=zyc
+COMPILER=aosp
 
 # Clone ToolChain
 function cloneTC() {
@@ -105,7 +105,7 @@ function cloneTC() {
 	  		echo "  Already Cloned Aosp Clang"
 	  		echo "××××××××××××××××××××××××××××"
 			else
-			export CLANG_VERSION="clang-r487747"
+			export CLANG_VERSION="clang-r498229"
 			echo "* It's not cloned, cloning it..."
         		mkdir clangB
         		cd clangB || exit
@@ -171,8 +171,8 @@ function exports() {
         export SUBARCH=arm64
                
         # KBUILD HOST and USER
-        export KBUILD_BUILD_HOST=ArchLinux
-        export KBUILD_BUILD_USER="NotZeeta"
+        export KBUILD_BUILD_HOST=Ubuntu
+        export KBUILD_BUILD_USER="wahyu_studi"
         
         # CI
         if [ "$CI" ]
