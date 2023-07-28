@@ -61,7 +61,7 @@ DATE=$(TZ=Europe/Lisbon date +"%Y%m%d-%T")
 TM=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME=Nexus
+ZIPNAME=Klinker
 FINAL_ZIP=${ZIPNAME}-${VERSION}-${DEVICE}-Klinker-KERNEL-MIUI-${TM}.zip
 
 # Specify compiler [ proton, nexus, aosp ]
@@ -196,16 +196,16 @@ function exports() {
 # Telegram Bot Integration
 
 function post_msg() {
-	curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
-	-d chat_id="$chat_id" \
+	curl -s -X POST "https://api.telegram.org/bot1446507242:AAFivf422Yvh3CL7y98TJmxV1KgyKByuPzM/sendMessage" \
+	-d chat_id="-1001421078455" \
 	-d "disable_web_page_preview=true" \
 	-d "parse_mode=html" \
 	-d text="$1"
 	}
 
 function push() {
-	curl -F document=@$1 "https://api.telegram.org/bot$token/sendDocument" \
-	-F chat_id="$chat_id" \
+	curl -F document=@$1 "https://api.telegram.org/bot1446507242:AAFivf422Yvh3CL7y98TJmxV1KgyKByuPzM/sendDocument" \
+	-F chat_id="-1001421078455" \
 	-F "disable_web_page_preview=true" \
 	-F "parse_mode=html" \
 	-F caption="$2"
