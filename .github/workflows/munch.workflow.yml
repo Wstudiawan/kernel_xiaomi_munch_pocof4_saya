@@ -1,9 +1,9 @@
-name: Nexus Kernel Munch
-run-name: Nexus Kernel Munch
+name: Klinker Kernel Munch
+run-name: Klinker Kernel Munch
 
 on:
   push:
-    branches: [ staging ]
+    branches: [ 4.19.289 ]
 
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Nexus Kernel Munch
+      - name: Klinker Kernel Munch
         run: bash build.sh null munch lto
         env:
            token: ${{ secrets.TOKEN }}
