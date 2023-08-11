@@ -266,6 +266,13 @@ START=$(date +"%s")
 	       CROSS_COMPILE=aarch64-linux-android- \
 	       CROSS_COMPILE_COMPAT=arm-linux-androideabi- \
 	       V=$VERBOSE 2>&1 | tee error.log
+	if [ -f $(pwd)/out/arch/arm64/boot/Image.gz ]
+	then
+        if [ BUILD_DTBO = 1 ]
+        then
+		git clone --depth=1 https://android.googlesource.com/platform/system/libufdt libufdt
+                python3 "libufdt/utils/src/mkdtboimg.py" \
+					        create "out/arch/arm64/boot/dtbo.img" --page_size=4096 $(pwd)/out/arch/arm64/boot/dts/qcom/*.dtbo
 	fi
 	
 	# Verify Files
@@ -277,6 +284,7 @@ START=$(date +"%s")
 	       post_msg " Kernel Compilation Finished. Started Zipping "
 		   find ${OUT_DIR}/$dts_source -name '*.dtb' -exec cat {} + >${OUT_DIR}/arch/arm64/boot/dtb
 		   DTB=$(pwd)/out/arch/arm64/boot/dtb
+		   
 	fi
 	}
 
