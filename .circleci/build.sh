@@ -286,7 +286,7 @@ START=$(date +"%s")
 		   DTB=$(pwd)/out/arch/arm64/boot/dtb
 		   
 	fi
-	}
+	
 
 # Zipping
 function zipping() {
