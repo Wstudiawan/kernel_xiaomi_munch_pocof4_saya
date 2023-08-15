@@ -43,7 +43,7 @@ MODEL="Poco F4"
 fi
 
 # Files
-IMAGE=$(pwd)/out/arch/arm64/boot/Image
+IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 OUT_DIR=out/
 dts_source=arch/arm64/boot/dts/vendor/qcom
