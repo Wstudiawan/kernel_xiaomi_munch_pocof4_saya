@@ -43,7 +43,7 @@ MODEL="Poco F4"
 fi
 
 # Files
-IMAGE=$(pwd)/out/arch/arm64/boot/Image
+
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 OUT_DIR=out/
@@ -272,9 +272,7 @@ START=$(date +"%s")
 	# Verify Files
 	if ! [ -a "$IMAGE" ];
 	   then
-	       push "error.log" "Build Throws Errors"
-	       exit 1
-	   else
+	       
 	       post_msg " Kernel Compilation Finished. Started Zipping "
 		   find ${OUT_DIR}/$dts_source -name '*.dtb' -exec cat {} + >${OUT_DIR}/arch/arm64/boot/dtb
 		   DTB=$(pwd)/out/arch/arm64/boot/dtb
