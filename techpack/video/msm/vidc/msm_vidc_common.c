@@ -25,6 +25,8 @@ void __init init_vidc_kmem_buf_pool(void)
 	kmem_buf_pool = KMEM_CACHE(msm_vidc_buffer, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
 }
 
+static struct kmem_cache *kmem_buf_pool;
+
 #define IS_ALREADY_IN_STATE(__p, __d) (\
 	(__p >= __d)\
 )
